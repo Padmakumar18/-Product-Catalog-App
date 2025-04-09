@@ -24,7 +24,7 @@ export const PRODUCTS = [
       price: 58999,
       rating: 4.0,
       description: 'Dell laptop with Intel i5 processor',
-      imageUrl: 'https://via.placeholder.com/150'
+      imageUrl: 'https://via.placeholder.com/150' 
     },
     {
       id: 4,
