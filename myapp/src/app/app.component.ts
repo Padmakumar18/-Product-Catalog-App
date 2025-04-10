@@ -197,4 +197,39 @@ export class AppComponent {
   ngOnInit() {
     console.log(this.Products); 
   }
+
+  selectedOption: string = '';
+  selectedCategory: string = '';
+  filteredProducts = [...this.Products]; 
+  
+  categories: string[] = [...new Set(this.Products.map(p => p.category))];
+
+  sortProducts() {
+    if(this.selectedOption === 'lowToHigh') {
+      this.Products.sort((a, b) => a.price - b.price);
+    }
+    else if(this.selectedOption === 'highToLow') {
+      this.Products.sort((a, b) => b.price - a.price);
+    }
+    else if(this.selectedOption === 'nameAZ') {
+      this.Products.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    else if(this.selectedOption === 'nameZA') {
+      this.Products.sort((a, b) => b.name.localeCompare(a.name));
+    }
+  }
+  
+  filterProducts() {
+    if(this.selectedCategory) {
+      this.filteredProducts = this.Products.filter(p => p.category === this.selectedCategory);
+    } else {
+      this.filteredProducts = [...this.Products];
+    }
+  }
+
+  clearFilter() {
+    this.selectedCategory = '';
+    this.selectedOption = '';
+    this.filteredProducts = [...this.Products];
+  }
 }
