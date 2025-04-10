@@ -11,6 +11,10 @@ import { CommonModule } from '@angular/common';
 })
 
 export class AppComponent {
+
+  selectedOption: string = '';
+  selectedCategory: string = '';
+
   Products = [
     {
       id: 1,
@@ -193,38 +197,34 @@ export class AppComponent {
       stock: 9
     }
   ];
-  
-  ngOnInit() {
-    console.log(this.Products); 
-  }
 
-  selectedOption: string = '';
-  selectedCategory: string = '';
-  filteredProducts = [...this.Products]; 
-  
+  filteredProducts = [...this.Products];
+
   categories: string[] = [...new Set(this.Products.map(p => p.category))];
 
   sortProducts() {
-    if(this.selectedOption === 'lowToHigh') {
-      this.Products.sort((a, b) => a.price - b.price);
+    if (this.selectedOption === 'lowToHigh') {
+      this.filteredProducts.sort((a, b) => a.price - b.price);
     }
-    else if(this.selectedOption === 'highToLow') {
-      this.Products.sort((a, b) => b.price - a.price);
+    else if (this.selectedOption === 'highToLow') {
+      this.filteredProducts.sort((a, b) => b.price - a.price);
     }
-    else if(this.selectedOption === 'nameAZ') {
-      this.Products.sort((a, b) => a.name.localeCompare(b.name));
+    else if (this.selectedOption === 'nameAZ') {
+      this.filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
     }
-    else if(this.selectedOption === 'nameZA') {
-      this.Products.sort((a, b) => b.name.localeCompare(a.name));
+    else if (this.selectedOption === 'nameZA') {
+      this.filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
     }
   }
-  
+
   filterProducts() {
-    if(this.selectedCategory) {
-      this.filteredProducts = this.Products.filter(p => p.category === this.selectedCategory);
+    if (this.selectedCategory) {
+      this.filteredProducts = this.Products.filter(product => product.category === this.selectedCategory);
     } else {
       this.filteredProducts = [...this.Products];
     }
+
+    this.sortProducts();  // optional -> keep sorting after filter
   }
 
   clearFilter() {
@@ -233,3 +233,4 @@ export class AppComponent {
     this.filteredProducts = [...this.Products];
   }
 }
+
