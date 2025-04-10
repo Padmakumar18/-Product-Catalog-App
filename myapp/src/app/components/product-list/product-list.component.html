@@ -1,1 +1,14 @@
-<p>product-list works!</p>
+<h2>Product Catalog</h2>
+
+<input type="text" [(ngModel)]="searchText" placeholder="Search Products">
+
+<select [(ngModel)]="sortBy">
+  <option value="name">Name</option>
+  <option value="price">Price</option>
+</select>
+
+<ul>
+  <li *ngFor="let product of products | filter:searchText | sort:sortBy">
+    {{ product.name }} - {{ product.category }} - ₹{{ product.price }}
+  </li>
+</ul>

@@ -2,10 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [],
-  templateUrl: './product-detail.component.html',
-  styleUrl: './product-detail.component.css'
+  template: `<h2>Product Details</h2>`
 })
-export class ProductDetailComponent {
-
-}
+export class ProductDetailComponent { }
