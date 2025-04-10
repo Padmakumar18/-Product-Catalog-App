@@ -1,1 +1,12 @@
-<app-product-list></app-product-list>
+<h1 class="title">Product Catalog</h1>
+
+<div class="product-container">
+  <div class="product-card" *ngFor="let product of Products">
+    <!-- <img [src]="product.image" alt="{{product.name}}"> -->
+    <h2>{{product.name}}</h2>
+    <p>{{product.description}}</p>
+    <p><strong>Category:</strong> {{product.category}}</p>
+    <p><strong>Price:</strong> ₹{{product.price}}</p>
+    <p><strong>Stock:</strong> {{product.stock}} items</p>
+  </div>
+</div>
