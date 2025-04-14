@@ -1,6 +1,5 @@
 <h1 class="title">Product Catalog</h1>
 
-<!-- Filters and Sort Options -->
 <div class="buttons">
   <select [(ngModel)]="selectedOption">
     <option value="">-- Sort By --</option>
@@ -9,7 +8,7 @@
     <option value="nameAZ">Name: A - Z</option>
     <option value="nameZA">Name: Z - A</option>
   </select>
-
+  
   <select [(ngModel)]="selectedCategory">
     <option value="">-- Filter By Category --</option>
     <option *ngFor="let category of categories" [value]="category">{{category}}</option>
@@ -18,16 +17,14 @@
   <button (click)="clearFilter()">Clear Filter</button>
 </div>
 
-<!-- Product List Component -->
-<app-product-list
-  [products]="Products"
-  [selectedOption]="selectedOption"
-  [selectedCategory]="selectedCategory"
-  (productSelected)="selectedProduct = $event"
-></app-product-list>
-
-<!-- Product Detail Component -->
-<app-product-detail
-  *ngIf="selectedProduct"
-  [product]="selectedProduct"
-></app-product-detail>
+<div class="product-container">
+  <div class="product-card" *ngFor="let product of Products | categoryFilter:selectedCategory | sort:selectedOption">
+    <a [routerLink]="['/product', product.id]">
+      <h2>{{product.name}}</h2>
+      <p>{{product.description}}</p>
+      <p><strong>Category:</strong> {{product.category}}</p>
+      <p><strong>Price:</strong> ₹{{product.price}}</p>
+      <p><strong>Stock:</strong> {{product.stock}} items</p>
+    </a>
+  </div>
+</div>
