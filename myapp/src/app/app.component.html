@@ -18,7 +18,6 @@
   <button (click)="clearFilter()">Clear Filter</button>
 </div>
 
-<!-- Product List Component -->
 <app-product-list
   [products]="Products"
   [selectedOption]="selectedOption"
@@ -26,7 +25,6 @@
   (productSelected)="selectedProduct = $event"
 ></app-product-list>
 
-<!-- Product Detail Component -->
 <app-product-detail
   *ngIf="selectedProduct"
   [product]="selectedProduct"
