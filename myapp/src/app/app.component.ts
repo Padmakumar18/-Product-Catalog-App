@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SortPipe } from './pipes/sort.pipe';
+import { CategoryFilterPipe } from './pipes/filter.pipe';
 
 @Component({
   selector: 'app-root',
-  standalone: true, 
-  imports: [FormsModule, CommonModule],
+  standalone: true,
+  imports: [FormsModule, CommonModule, SortPipe, CategoryFilterPipe],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
 export class AppComponent {
 
   selectedOption: string = '';
@@ -198,39 +199,20 @@ export class AppComponent {
     }
   ];
 
-  filteredProducts = [...this.Products];
-
+  // filteredProducts = [...this.Products];
   categories: string[] = [...new Set(this.Products.map(p => p.category))];
 
-  sortProducts() {
-    if (this.selectedOption === 'lowToHigh') {
-      this.filteredProducts.sort((a, b) => a.price - b.price);
-    }
-    else if (this.selectedOption === 'highToLow') {
-      this.filteredProducts.sort((a, b) => b.price - a.price);
-    }
-    else if (this.selectedOption === 'nameAZ') {
-      this.filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
-    }
-    else if (this.selectedOption === 'nameZA') {
-      this.filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
-    }
-  }
-
-  filterProducts() {
-    if (this.selectedCategory) {
-      this.filteredProducts = this.Products.filter(product => product.category === this.selectedCategory);
-    } else {
-      this.filteredProducts = [...this.Products];
-    }
-
-    this.sortProducts();  // optional -> keep sorting after filter
-  }
+  // filterProducts() {
+  //   if (this.selectedCategory) {
+  //     this.filteredProducts = this.Products.filter(product => product.category === this.selectedCategory);
+  //   } else {
+  //     this.filteredProducts = [...this.Products];
+  //   }
+  // }
 
   clearFilter() {
     this.selectedCategory = '';
     this.selectedOption = '';
-    this.filteredProducts = [...this.Products];
+    // this.filteredProducts = [...this.Products];
   }
 }
-

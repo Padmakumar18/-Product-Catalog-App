@@ -1,7 +1,7 @@
-<!-- <h1 class="title">Product Catalog</h1>
+<h1 class="title">Product Catalog</h1>
 
 <div class="buttons">
-  <select [(ngModel)]="selectedOption" (change)="sortProducts()">
+  <select [(ngModel)]="selectedOption">
     <option value="">-- Sort By --</option>
     <option value="lowToHigh">Price: Low to High</option>
     <option value="highToLow">Price: High to Low</option>
@@ -9,25 +9,20 @@
     <option value="nameZA">Name: Z - A</option>
   </select>
   
-  <select [(ngModel)]="selectedCategory" (change)="filterProducts()">
+  <select [(ngModel)]="selectedCategory">
     <option value="">-- Filter By Category --</option>
     <option *ngFor="let category of categories" [value]="category">{{category}}</option>
   </select>
-  
-  <button (click)="filterProducts()">Filter</button>
-  
+
   <button (click)="clearFilter()">Clear Filter</button>
 </div>
 
 <div class="product-container">
-  <div class="product-card" *ngFor="let product of filteredProducts">
-    <img [src]="product.image" alt="{{product.name}}">
+  <div class="product-card" *ngFor="let product of Products | categoryFilter:selectedCategory | sort:selectedOption">
     <h2>{{product.name}}</h2>
     <p>{{product.description}}</p>
     <p><strong>Category:</strong> {{product.category}}</p>
     <p><strong>Price:</strong> ₹{{product.price}}</p>
     <p><strong>Stock:</strong> {{product.stock}} items</p>
   </div>
-</div> -->
-
-<app-product-list></app-product-list>
+</div>
