@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ProductService } from '@app/services/product.service';
 import { CategoryFilterPipe } from '@app/pipes/filter.pipe';
 import { SortPipe } from '@app/pipes/sort.pipe';
+import { Component,OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'; 
+
 
 @Component({
   selector: 'app-product-list',

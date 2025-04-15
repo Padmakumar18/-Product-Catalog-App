@@ -27,15 +27,16 @@
     margin-bottom: 0.5rem;
   }
   
-  a {
+  .back-button {
     display: inline-block;
     margin-top: 1rem;
-    color: #007bff;
+    color: white;
     text-decoration: none;
+    background-color: #333;
+    padding: 0.7em;
+    border-radius: 1em;
   }
   
-  a:hover {
-    text-decoration: underline;
+  .back-button:hover {
     cursor: pointer;
   }
-  

@@ -1,10 +1,9 @@
 <div *ngIf="product">
-    <h1>{{ product.name }}</h1>
-    <!-- <img [src]="product.image" alt="{{product.name}}"> -->
-    <p>{{ product.description }}</p>
-    <p><strong>Price:</strong> ₹{{ product.price }}</p>
-    <p><strong>Stock:</strong> {{ product.stock }}</p>
-    <p><strong>Category:</strong> {{ product.category }}</p>
-    <a routerLink="/">← Back to Product List</a>
-  </div>
-  
+  <h1>{{ product.name }}</h1>
+  <p>{{ product.description }}</p>
+  <p><strong>Price:</strong> ₹{{ product.price }}</p>
+  <p><strong>Stock:</strong> {{ product.stock }}</p>
+  <p><strong>Category:</strong> {{ product.category }}</p>
+  <button (click)="goBack()" class="back-button">← Back to Product List</button>
+
+</div>
